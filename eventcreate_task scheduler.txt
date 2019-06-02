@@ -1,0 +1,22 @@
+REM This bat is nessasury short cut.
+REM task scheduler 
+REM  General tub
+REM   seccrurity option
+REM  trigger tub
+REM   log:application
+REM   source:<source name>
+REM   event id:<ID>
+REM  conditions tub
+
+REM EVENTCREATE /ID 998 /L application /SO app_test /T INFORMATION /D "This is eventlog_app test.catch"
+REM EVENTCREATE /ID 998 /L application /SO app_dummy /T INFORMATION /D "This is eventlog_app test.no catch"
+REM
+
+REM---
+
+@echo off
+
+EVENTCREATE /ID 999 /L application /SO app_catch /T ERROR /D "This is app_dummy catch message!"
+
+@echo on
+
