@@ -1,0 +1,35 @@
+
+Sub aCell_Check()
+    Dim CellVar As Range
+    Dim firstAddress As String
+    Dim DefaultValue As Integer
+    Dim TargetCol As String
+    Dim WriteCelli As Integer
+    Dim WriteCellj As Integer
+  
+  
+    With Range("A1:F25")
+        Set CellVar = .Find("デフォルト", LookIn:=xlValues, LookAt:=xlPart)
+        DefaultValue = CellVar.Column
+    End With
+  
+    With Range("A1:F25")
+        Set CellVar = .Find("★", LookIn:=xlValues, LookAt:=xlPart)
+        If Not CellVar Is Nothing Then
+            firstAddress = CellVar.Address
+            Do
+                TargetCol = CellVar.Row
+                WriteCelli = CellVar.Column
+                WriteCellj = CellVar.Row
+                'MsgBox WriteCelli
+                'MsgBox WriteCellj
+                'MsgBox Cells(TargetCol, DefaultValue).Value
+                Cells(WriteCellj, WriteCelli) = Cells(TargetCol, DefaultValue).Value
+                Cells(WriteCellj, WriteCelli).Interior.ColorIndex = 6
+                Set CellVar = .FindNext(CellVar)
+                If CellVar Is Nothing Then Exit Do
+            Loop Until CellVar.Address = firstAddress
+        End If
+    End With
+End Sub
+
