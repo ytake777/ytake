@@ -1,5 +1,5 @@
 
-Sub aCell_Check()
+Sub Cells_Replace()
     Dim CellVar As Range
     Dim firstAddress As String
     Dim DefaultValue As Integer
@@ -9,12 +9,12 @@ Sub aCell_Check()
   
   
     With Range("A1:F25")
-        Set CellVar = .Find("デフォルト", LookIn:=xlValues, LookAt:=xlPart)
+        Set CellVar = .Find("default", LookIn:=xlValues, LookAt:=xlPart)
         DefaultValue = CellVar.Column
     End With
   
     With Range("A1:F25")
-        Set CellVar = .Find("★", LookIn:=xlValues, LookAt:=xlPart)
+        Set CellVar = .Find("star", LookIn:=xlValues, LookAt:=xlPart)
         If Not CellVar Is Nothing Then
             firstAddress = CellVar.Address
             Do
